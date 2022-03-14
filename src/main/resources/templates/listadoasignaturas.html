@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Asignaturas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Lista de Asignaturas:</h1>
+	<table border='1'>
+		<th:block th:each="asig : ${lista}">
+			<tr>
+				<td th:text="${asig.id}"></td>
+				<td th:text="${asig.nombre}"></td>
+				<td th:text="${asig.descripcion}"></td>
+				<td th:text="${asig.curso}"></td>
+			</tr>
+		</th:block>	
+	</table> 
+	
+</body>
