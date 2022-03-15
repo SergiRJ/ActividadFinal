@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Asignaturas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Lista de usuarios con rol consulta:</h1>
+	<table border='1'>
+		<th:block th:each="usu : ${lista}">
+			<tr>
+				<td th:text="${usu.username}"></td>
+				
+			</tr>
+		</th:block>	
+	</table> 
+	
+</body>

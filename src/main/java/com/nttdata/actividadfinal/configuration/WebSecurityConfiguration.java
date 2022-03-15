@@ -29,7 +29,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	
 	
-	String[] resources = new String[] {"/include/**","/js/**","/css/**"};
+	String[] resources = new String[] {"/include/**","/js/**","/css/**", "/api/**"};
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{

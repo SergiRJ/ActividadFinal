@@ -13,11 +13,37 @@ import com.nttdata.actividadfinal.service.AsignaturaService;
 public class AsignaturaServiceImpl implements AsignaturaService{
 
 	@Autowired
-	AsignaturaRepoJPA AsignaturaJPA;
+	AsignaturaRepoJPA asignaturaJPA;
 
 	@Override
 	public List<Asignatura> listar() {
-		return AsignaturaJPA.findAll();
+		return asignaturaJPA.findAll();
+	}
+
+	@Override
+	public Asignatura getById(Integer id) {
+		return asignaturaJPA.findById(id).orElse(null);
+	}
+
+	@Override
+	public Asignatura inserta(Asignatura asignatura) {
+		return asignaturaJPA.save(asignatura);
+	}
+
+	@Override
+	public Asignatura modificar(Asignatura asignatura) {
+		return asignaturaJPA.save(asignatura);
+	}
+
+	@Override
+	public void eliminar(Integer id) {
+		asignaturaJPA.deleteById(id);
+		
+	}
+	
+	@Override
+	public void eliminarTodos() {
+		asignaturaJPA.deleteAll();
 	}
 	
 }

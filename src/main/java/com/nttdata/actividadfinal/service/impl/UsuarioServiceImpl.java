@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.nttdata.actividadfinal.repository.UsuarioRepoJPA;
+import com.nttdata.actividadfinal.repository.entity.Rol;
 import com.nttdata.actividadfinal.repository.entity.Usuario;
 import com.nttdata.actividadfinal.service.UsuarioService;
 
@@ -18,7 +19,7 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService  {
 	UsuarioRepoJPA usuarioRepo;
 
 	@Override
-	public List<Usuario> listaPorRol(String rol) {
+	public List<Usuario> listaPorRol(Rol rol) {
 				return usuarioRepo.findByRolLike(rol);
 	}
 
