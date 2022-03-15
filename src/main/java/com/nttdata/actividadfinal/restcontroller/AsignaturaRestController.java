@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,7 @@ public class AsignaturaRestController {
 	AsignaturaService asignaturaService;
 	
 	@GetMapping
+	@Cacheable(value="asignaturas")
 	public ResponseEntity<List<Asignatura>> listarAsignaturas(){
 		HttpHeaders headers = new HttpHeaders();
 		List<Asignatura> lista = asignaturaService.listar();
@@ -51,6 +54,7 @@ public class AsignaturaRestController {
 	}
 	
 	@PostMapping
+	@CacheEvict(value="asignaturas", allEntries=true)
 	public ResponseEntity<Asignatura> insertarAsignatura(@RequestBody Asignatura asignatura){
 		try {
 			HttpHeaders headers = new HttpHeaders();
@@ -73,6 +77,7 @@ public class AsignaturaRestController {
 	}	
 	
 	@PutMapping
+	@CacheEvict(value="asignaturas", allEntries=true)
 	public ResponseEntity<Asignatura> modificarAsignatura(@RequestBody Asignatura asig) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
@@ -88,6 +93,7 @@ public class AsignaturaRestController {
 	
 
 	@DeleteMapping(value="/{id}")
+	@CacheEvict(value="asignaturas", allEntries=true)
     public ResponseEntity<Asignatura> borrarAsignatura(@PathVariable("id") Integer id) {
 		try {
 			HttpHeaders headers = new HttpHeaders();
@@ -100,6 +106,7 @@ public class AsignaturaRestController {
 	} 
 	
 	@DeleteMapping
+	@CacheEvict(value="asignaturas", allEntries=true)
     public ResponseEntity<Asignatura> borrarTodasAsignaturas() {
 		try {
 			HttpHeaders headers = new HttpHeaders();
